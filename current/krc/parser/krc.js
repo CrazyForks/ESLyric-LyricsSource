@@ -10,7 +10,7 @@
 
 export function getConfig(cfg) {
     cfg.name = "KRC Parser Plus"
-    cfg.version = "0.2.1"
+    cfg.version = "0.2.2"
     cfg.author = "Robotxm"
     cfg.parsePlainText = false
     cfg.fileType = "krc"
@@ -59,7 +59,7 @@ function xorKRC(rawData) {
 function krcToLrc(krcContent) {
     const metaInfoRegex = /^\[([^\d:][^:]*):([^:]*)\]\s*$/
     const lineTimestampRegex = /^\[(\d+),(\d+)\]/
-    const wordTimestampRegex = /<(\d+),(\d+),(\d+)>([^<]*)/g
+    const wordTimestampRegex = /<(\d+),(\d+),(\d+)>(.*?)(?=<\d+,\d+,\d+>|$)/g
     const lrcMetaTags = ["ar", "ti", "al", "by"]
 
     /* Start conversion */

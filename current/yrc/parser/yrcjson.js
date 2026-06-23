@@ -1,7 +1,7 @@
 /**
  * YRCJSON Lyrics Parser
  * Author: Robotxm
- * Version: 0.3
+ * Version: 0.3.1
  * License: GPL 3.0
  * Description: Make foobar2000 with ESLyric able to parse YRC and translated lyrics if exist.
  * Github: https://github.com/Robotxm/ESLyric-LyricsSource
@@ -9,7 +9,7 @@
 
 export function getConfig(cfg) {
     cfg.name = "YRC JSON Parser"
-    cfg.version = "0.3"
+    cfg.version = "0.3.1"
     cfg.author = "Robotxm"
     cfg.parsePlainText = true
     cfg.fileType = "yrcjson"
@@ -22,7 +22,7 @@ export function parseLyric(context) {
 function yrcToLrc(yrcContent) {
     const metaInfoRegex = /^\[([^\d:][^:]*):([^:]*)\]\s*$/gm
     const yrcLineTimestampRegex = /^\[(\d+),(\d+)\]/
-    const yrcWordTimestampRegex = /\((\d+),(\d+),(\d+)\)([^\(]*)/g
+    const yrcWordTimestampRegex = /\((\d+),(\d+),(\d+)\)(.*?)(?=\(\d+,\d+,\d+\)|$)/g
     const lrcLineTimestampRegex = /^\[(\d+):(\d+).(\d+)\]|^\[(\d+):(\d+)\]/
     const lrcMetaTags = ["ar", "ti", "al", "by"]
 
